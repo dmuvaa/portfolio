@@ -32,7 +32,7 @@ export default function Home() {
               </Link>
             </div>
             <div className="flex flex-col items-start justify-center">
-              <img src="/profile.jpg" alt="Dennis Muvaa" className="rounded-full w-full h-auto max-w-xs" />
+              <Image src="/profile.jpg" alt="Dennis Muvaa" className="rounded-full w-full h-auto max-w-xs" />
             </div>
           </div>
         </section>
