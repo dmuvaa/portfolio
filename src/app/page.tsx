@@ -10,8 +10,8 @@ export default function Home() {
       <Header />
       <main className="flex-1">
         <Hero
-          title="Hi, I'm Dennis Muvaa"
-          subtitle="I'm a software engineer and technical writer with a passion for creating elegant and efficient solutions. I enjoy tackling complex problems and sharing my knowledge with others."
+          title="Hi, I&apos;m Dennis Muvaa"
+          subtitle="I&apos;m a software engineer and technical writer with a passion for creating elegant and efficient solutions. I enjoy tackling complex problems and sharing my knowledge with others."
           buttonText="Learn More About Me"
           buttonLink="#about"
         />
@@ -21,8 +21,8 @@ export default function Home() {
           <div className="grid gap-8 md:grid-cols-2 md:gap-12 lg:gap-16">
             <div className="flex flex-col items-start justify-center">
               <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl">About Me</h2>
-              <p className="mt-4 text-muted-foreground md:text-xl">
-                I specialize in full stack development with a focus on building scalable applications and creating comprehensive documentation. With two years of professional experience, I’ve worked on a variety of projects ranging from web applications to technical content creation, ensuring high performance and user engagement.
+              <p className="mt-4 text-gray-700 md:text-xl">
+                I specialize in full stack development with a focus on building scalable applications and creating comprehensive documentation. With two years of professional experience, I&apos;ve worked on a variety of projects ranging from web applications to technical content creation, ensuring high performance and user engagement.
               </p>
               <Link
                 href="/about"
@@ -32,7 +32,7 @@ export default function Home() {
               </Link>
             </div>
             <div className="flex flex-col items-start justify-center">
-              <Image src="/profile.jpg" alt="Dennis Muvaa" className="rounded-full w-full h-auto max-w-xs" />
+              <Image src="/profile.jpg" alt="Dennis Muvaa" width={300} height={300} className="rounded-full" />
             </div>
           </div>
         </section>
@@ -42,8 +42,8 @@ export default function Home() {
           <div className="grid gap-8 md:grid-cols-2 md:gap-12 lg:gap-16">
             <div className="flex flex-col items-start justify-center">
               <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl">Software Engineering</h2>
-              <p className="mt-4 text-muted-foreground md:text-xl">
-                Explore my work in software engineering, including web development, mobile apps, and more. I’ve worked on projects involving complex API integrations, system design, and optimization.
+              <p className="mt-4 text-gray-700 md:text-xl">
+                Explore my work in software engineering, including web development, mobile apps, and more. I&apos;ve worked on projects involving complex API integrations, system design, and optimization.
               </p>
               <Link
                 href="/software-engineering"
@@ -54,7 +54,7 @@ export default function Home() {
             </div>
             <div className="flex flex-col items-start justify-center">
               <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl">Technical Writing</h2>
-              <p className="mt-4 text-muted-foreground md:text-xl">
+              <p className="mt-4 text-gray-700 md:text-xl">
                 Check out my technical writing work, including blog posts, documentation, and more. My writing is focused on clear, concise, and accurate content that helps users and developers alike.
               </p>
               <Link
@@ -73,7 +73,7 @@ export default function Home() {
           <div className="grid gap-8 md:grid-cols-2 md:gap-12 lg:gap-16">
             {/* ALX Africa */}
             <div className="flex flex-col items-center justify-center">
-              <Image src="/images/alx-certificate.png" alt="ALX Certificate" width={600} height={400} className="rounded-md mb-4"/>
+              <Image src="/images/alx-certificate.png" alt="ALX Certificate" width={600} height={400} className="rounded-md mb-4" />
               <h3 className="text-xl font-semibold">Certificate in Software Engineering</h3>
               <p className="text-gray-500">ALX Africa • Nairobi, Kenya • 2023</p>
               <p className="mt-2 text-gray-700">
