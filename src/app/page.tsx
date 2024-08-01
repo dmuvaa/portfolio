@@ -1,113 +1,117 @@
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Hero from "./components/Hero";
+import Link from "next/link";
 import Image from "next/image";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
+    <div className="flex min-h-screen flex-col">
+      <Header />
+      <main className="flex-1">
+        <Hero
+          title="Hi, I'm Dennis Muvaa"
+          subtitle="I'm a software engineer and technical writer with a passion for creating elegant and efficient solutions. I enjoy tackling complex problems and sharing my knowledge with others."
+          buttonText="Learn More About Me"
+          buttonLink="#about"
         />
-      </div>
 
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+        {/* About Section */}
+        <section className="container py-12 md:py-16 lg:py-20 ml-4 md:ml-8 lg:ml-12" id="about">
+          <div className="grid gap-8 md:grid-cols-2 md:gap-12 lg:gap-16">
+            <div className="flex flex-col items-start justify-center">
+              <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl">About Me</h2>
+              <p className="mt-4 text-muted-foreground md:text-xl">
+                I specialize in full stack development with a focus on building scalable applications and creating comprehensive documentation. With two years of professional experience, I’ve worked on a variety of projects ranging from web applications to technical content creation, ensuring high performance and user engagement.
+              </p>
+              <Link
+                href="/about"
+                className="mt-4 inline-flex h-9 items-center justify-center rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow transition-colors hover:bg-blue-700 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-blue-600"
+              >
+                Read More
+              </Link>
+            </div>
+            <div className="flex flex-col items-start justify-center">
+              <img src="/profile.jpg" alt="Dennis Muvaa" className="rounded-full w-full h-auto max-w-xs" />
+            </div>
+          </div>
+        </section>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+        {/* Software Engineering Section */}
+        <section className="container py-12 md:py-16 lg:py-20 ml-4 md:ml-8 lg:ml-12">
+          <div className="grid gap-8 md:grid-cols-2 md:gap-12 lg:gap-16">
+            <div className="flex flex-col items-start justify-center">
+              <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl">Software Engineering</h2>
+              <p className="mt-4 text-muted-foreground md:text-xl">
+                Explore my work in software engineering, including web development, mobile apps, and more. I’ve worked on projects involving complex API integrations, system design, and optimization.
+              </p>
+              <Link
+                href="/software-engineering"
+                className="mt-4 inline-flex h-9 items-center justify-center rounded-md bg-green-600 px-4 py-2 text-sm font-medium text-white shadow transition-colors hover:bg-green-700 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-green-600"
+              >
+                View Portfolio
+              </Link>
+            </div>
+            <div className="flex flex-col items-start justify-center">
+              <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl">Technical Writing</h2>
+              <p className="mt-4 text-muted-foreground md:text-xl">
+                Check out my technical writing work, including blog posts, documentation, and more. My writing is focused on clear, concise, and accurate content that helps users and developers alike.
+              </p>
+              <Link
+                href="/technical-writing"
+                className="mt-4 inline-flex h-9 items-center justify-center rounded-md bg-purple-600 px-4 py-2 text-sm font-medium text-white shadow transition-colors hover:bg-purple-700 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-purple-600"
+              >
+                View Portfolio
+              </Link>
+            </div>
+          </div>
+        </section>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
+        {/* Education Section */}
+        <section className="container py-12 md:py-16 lg:py-20 ml-4 md:ml-8 lg:ml-12 text-center">
+          <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl mb-8">Education</h2>
+          <div className="grid gap-8 md:grid-cols-2 md:gap-12 lg:gap-16">
+            {/* ALX Africa */}
+            <div className="flex flex-col items-center justify-center">
+              <Image src="/images/alx-certificate.png" alt="ALX Certificate" width={600} height={400} className="rounded-md mb-4"/>
+              <h3 className="text-xl font-semibold">Certificate in Software Engineering</h3>
+              <p className="text-gray-500">ALX Africa • Nairobi, Kenya • 2023</p>
+              <p className="mt-2 text-gray-700">
+                Awarded a Certificate in Software Engineering after 12 months of rigorous learning and practical application.
+              </p>
+            </div>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+            {/* Egerton University */}
+            <div className="flex flex-col items-center justify-center">
+              <h3 className="text-xl font-semibold">Bachelor of Arts in Economics</h3>
+              <p className="text-gray-500">Egerton University • Njoro, Kenya • 2018 • 3.9 GPA</p>
+              <p className="mt-2 text-gray-700">
+                Completed a Bachelor of Arts in Economics with a minor in History, graduating with Second Class Honors.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Socials Section */}
+        <section className="container py-12 md:py-16 lg:py-20 ml-4 md:ml-8 lg:ml-12 text-center">
+          <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl mb-8">Socials</h2>
+          <div className="flex justify-center space-x-8">
+            <a href="https://www.linkedin.com/in/dennis-muvaa-76b84416b" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800">
+              <Image src="/logos/linkedin.svg" alt="LinkedIn" width={40} height={40} />
+              <span className="ml-2">LinkedIn</span>
+            </a>
+            <a href="https://github.com/dmuvaa" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-gray-800">
+              <Image src="/logos/github.svg" alt="GitHub" width={40} height={40} />
+              <span className="ml-2">GitHub</span>
+            </a>
+            <a href="https://www.techlivened.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800">
+              <Image src="/logos/blog.svg" alt="Blog" width={100} height={40} />
+              <span className="ml-2">Blog</span>
+            </a>
+          </div>
+        </section>
+      </main>
+      <Footer className="text-center" />
+    </div>
   );
 }
