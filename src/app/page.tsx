@@ -14,7 +14,6 @@ export default function Home() {
           subtitle="I&apos;m a software engineer and technical writer with a passion for creating elegant and efficient solutions. I enjoy tackling complex problems and sharing my knowledge with others."
           buttonText="Learn More About Me"
           buttonLink="#about"
-          className=""
         />
 
         {/* About Section */}
