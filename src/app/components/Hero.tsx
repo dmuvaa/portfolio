@@ -5,10 +5,10 @@ interface HeroProps {
   subtitle: string;
   buttonText: string;
   buttonLink: string;
-  className: string;
+  className?: string;
 }
 
-export default function Hero({ title, subtitle, buttonText, buttonLink, className }: HeroProps) {
+export default function Hero({ title, subtitle, buttonText, buttonLink, className = "" }: HeroProps) {
   return (
     <section className="bg-gray-50 py-16">
       <div className="container mx-auto flex flex-col items-center text-center">
