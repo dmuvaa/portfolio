@@ -1,6 +1,6 @@
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import Image from "next/image";
+import Header from "../components/Header"
+import Footer from "../components/Footer"
+import Image from "next/image"
 
 export default function TechnicalWriting() {
   return (
@@ -35,7 +35,7 @@ export default function TechnicalWriting() {
                 <ul className="mt-4 list-disc pl-5 space-y-2 text-left">
                   <li>Authored over 200 blog articles on diverse tech topics, driving a 400% increase in website traffic.</li>
                   <li>Improved user engagement and comprehension through clear, concise, and accurate technical writing.</li>
-                  <li>Enhanced the company’s authority in the tech industry through in-depth coverage of topics like Ubuntu, Node.js, Nginx, AWS, and more.</li>
+                  <li>Enhanced the company's authority in the tech industry through in-depth coverage of topics like Ubuntu, Node.js, Nginx, AWS, and more.</li>
                   <li>Developed content that effectively reduced customer support inquiries by 30%.</li>
                 </ul>
               </div>
@@ -147,8 +147,8 @@ export default function TechnicalWriting() {
                 <h3 className="text-xl font-semibold mb-3 text-gray-800">nOps.io</h3>
                 <ul className="mt-4 list-disc pl-5 space-y-2 text-left text-gray-700">
                   <li>Part of the SEO strategy focusing on keyword optimization.</li>
-                  <li>Increased organic traffic by optimizing the site’s structure and content for key industry terms.</li>
-                  <li>Implemented advanced keyword strategies, aligning content with nOps.io’s business goals.</li>
+                  <li>Increased organic traffic by optimizing the site's structure and content for key industry terms.</li>
+                  <li>Implemented advanced keyword strategies, aligning content with nOps.io's business goals.</li>
                   <li>Regularly monitored SEO performance, making adjustments to maintain and improve rankings.</li>
                 </ul>
               </div>
@@ -181,92 +181,65 @@ export default function TechnicalWriting() {
             <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
               {/* Article 1 */}
               <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
-                <h3 className="text-xl font-semibold mb-2 text-gray-800">Optimizing Cloud Infrastructure with AWS</h3>
+                <h3 className="text-xl font-semibold mb-2 text-gray-800">Server-Side Rendering in Next.js for SEO</h3>
                 <p className="text-gray-700 mb-4">
-                  Discover the best practices for optimizing your cloud infrastructure using AWS, focusing on cost management, performance tuning, and security enhancements.
+                  Explore the benefits of SSR in Next.js and its impact on SEO performance.
                 </p>
-                <a href="#" className="inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">View Full Article</a>
+                <a href="https://www.techlivened.com/server-side-rendering-in-nextjs-for-seo" target="_blank" rel="noopener noreferrer" className="inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">View Full Article</a>
               </div>
 
               {/* Article 2 */}
               <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
-                <h3 className="text-xl font-semibold mb-2 text-gray-800">The Ultimate Guide to Programmatic SEO</h3>
+                <h3 className="text-xl font-semibold mb-2 text-gray-800">React Hooks Explained</h3>
                 <p className="text-gray-700 mb-4">
-                  Learn how to leverage programmatic SEO to scale content production, target long-tail keywords, and improve search visibility through automation.
+                  A comprehensive guide to understanding and using React Hooks effectively.
                 </p>
-                <a href="#" className="inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">View Full Article</a>
+                <a href="https://www.techlivened.com/react-hooks-explained" target="_blank" rel="noopener noreferrer" className="inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">View Full Article</a>
               </div>
 
               {/* Article 3 */}
               <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
-                <h3 className="text-xl font-semibold mb-2 text-gray-800">Mastering Site Audits: A Step-by-Step Guide</h3>
+                <h3 className="text-xl font-semibold mb-2  text-gray-800">Microsoft Remote Desktop Services Security Best Practices</h3>
                 <p className="text-gray-700 mb-4">
-                  A comprehensive guide to conducting effective site audits, focusing on identifying technical SEO issues and optimizing site structure for better rankings.
+                  Learn how to secure your Remote Desktop Services environment effectively.
                 </p>
-                <a href="#" className="inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">View Full Article</a>
+                <a href="https://cloudinfrastructureservices.co.uk/microsoft-remote-desktop-services-security-best-practices/" target="_blank" rel="noopener noreferrer" className="inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">View Full Article</a>
               </div>
 
               {/* Article 4 */}
               <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
-                <h3 className="text-xl font-semibold mb-2 text-gray-800">Maximizing SEO with Featured Snippets</h3>
+                <h3 className="text-xl font-semibold mb-2 text-gray-800">Implementing Caching in Node.js</h3>
                 <p className="text-gray-700 mb-4">
-                  Strategies for optimizing content to appear in Google’s featured snippets, improving visibility and click-through rates on search engine results pages.
+                  Discover techniques to improve Node.js application performance through caching.
                 </p>
-                <a href="#" className="inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">View Full Article</a>
+                <a href="https://www.techlivened.com/implementing-caching-in-node-js" target="_blank" rel="noopener noreferrer" className="inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">View Full Article</a>
               </div>
 
               {/* Article 5 */}
               <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
-                <h3 className="text-xl font-semibold mb-2 text-gray-800">Scaling Content Production with Automation</h3>
+                <h3 className="text-xl font-semibold mb-2 text-gray-800">NumPy vs Pandas in 2024</h3>
                 <p className="text-gray-700 mb-4">
-                  Learn how to scale your content production efficiently using automation tools, saving time while maintaining quality and consistency.
+                  A comparison of two popular Python libraries for data manipulation and analysis.
                 </p>
-                <a href="#" className="inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">View Full Article</a>
+                <a href="https://www.techlivened.com/numpy-vs-pandas-in-2024" target="_blank" rel="noopener noreferrer" className="inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">View Full Article</a>
               </div>
 
               {/* Article 6 */}
               <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
-                <h3 className="text-xl font-semibold mb-2 text-gray-800">Enhancing Web Performance with Server-Side Rendering</h3>
+                <h3 className="text-xl font-semibold mb-2 text-gray-800">Best AI Tools to Generate Images</h3>
                 <p className="text-gray-700 mb-4">
-                  Explore how server-side rendering (SSR) with frameworks like Next.js can enhance web performance and SEO by delivering fully-rendered pages.
+                  An overview of the top AI-powered image generation tools available in the market.
                 </p>
-                <a href="#" className="inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">View Full Article</a>
+                <a href="https://www.techlivened.com/best-ai-tools-to-generate-images" target="_blank" rel="noopener noreferrer" className="inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">View Full Article</a>
               </div>
 
               {/* Article 7 */}
               <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
-                <h3 className="text-xl font-semibold mb-2 text-gray-800">Keyword Research: Finding Hidden Opportunities</h3>
+                <h3 className="text-xl font-semibold mb-2 text-gray-800">GitLab Integration: Integrating GitLab with Other Tools and Services</h3>
                 <p className="text-gray-700 mb-4">
-                  Detailed strategies for conducting keyword research to discover hidden opportunities and align your content with search intent.
+                  Learn how to integrate GitLab with various development tools and services for improved workflow.
                 </p>
-                <a href="#" className="inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">View Full Article</a>
-              </div>
-
-              {/* Article 8 */}
-              <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
-                <h3 className="text-xl font-semibold mb-2 text-gray-800">The Role of Automation in SEO</h3>
-                <p className="text-gray-700 mb-4">
-                  Discover how automation can be leveraged in SEO to streamline routine tasks and enhance keyword analysis and content creation.
-                </p>
-                <a href="#" className="inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">View Full Article</a>
-              </div>
-
-              {/* Article 9 */}
-              <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
-                <h3 className="text-xl font-semibold mb-2 text-gray-800">Effective Link-Building Strategies for 2024</h3>
-                <p className="text-gray-700 mb-4">
-                  Learn about effective link-building strategies for 2024, focusing on building high-quality backlinks and forging content partnerships.
-                </p>
-                <a href="#" className="inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">View Full Article</a>
-              </div>
-
-              {/* Article 10 */}
-              <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
-                <h3 className="text-xl font-semibold mb-2 text-gray-800">Content Optimization for Voice Search</h3>
-                <p className="text-gray-700 mb-4">
-                  As voice search continues to grow, this article covers techniques for optimizing your content to be easily discoverable through voice-activated devices.
-                </p>
-                <a href="#" className="inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">View Full Article</a>
+                <a href="https://cloudinfrastructureservices.co.uk/gitlab-integration-integrating-gitlab-with-other-tools-and-services/" target="_blank" rel="noopener noreferrer" className="inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">View Full Article</a>
               </div>
             </div>
 
@@ -325,14 +298,6 @@ export default function TechnicalWriting() {
                 <h3 className="text-xl font-semibold mb-4">Content Creation</h3>
                 <div className="flex flex-wrap gap-4 justify-center">
                   <div className="flex items-center">
-                    <Image src="/logos/adobe-xd.svg" alt="Adobe XD" width={40} height={40} />
-                    <span className="ml-2 text-gray-700">Adobe XD</span>
-                  </div>
-                  <div className="flex items-center">
-                    <Image src="/logos/photoshop.svg" alt="Photoshop" width={40} height={40} />
-                    <span className="ml-2 text-gray-700">Photoshop</span>
-                  </div>
-                  <div className="flex items-center">
                     <Image src="/logos/figma.svg" alt="Figma" width={40} height={40} />
                     <span className="ml-2 text-gray-700">Figma</span>
                   </div>
@@ -344,5 +309,5 @@ export default function TechnicalWriting() {
       </main>
       <Footer />
     </div>
-  );
+  )
 }

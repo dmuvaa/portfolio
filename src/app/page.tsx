@@ -1,117 +1,135 @@
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import Hero from "./components/Hero";
-import Link from "next/link";
-import Image from "next/image";
+import Header from "./components/Header"
+import Footer from "./components/Footer"
+import Hero from "./components/Hero"
+import Link from "next/link"
+import Image from "next/image"
+import { ArrowRight, Linkedin, Github, Globe } from 'lucide-react'
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col bg-gradient-to-br from-blue-50 to-indigo-100">
       <Header />
       <main className="flex-1">
         <Hero
-          title="Hi, I&apos;m Dennis Muvaa"
-          subtitle="I&apos;m a software engineer and technical writer with a passion for creating elegant and efficient solutions. I enjoy tackling complex problems and sharing my knowledge with others."
+          title="Hi, I'm Dennis Muvaa"
+          subtitle="I'm a software engineer and technical writer with a passion for creating elegant and efficient solutions. I enjoy tackling complex problems and sharing my knowledge with others."
           buttonText="Learn More About Me"
           buttonLink="#about"
         />
 
         {/* About Section */}
-        <section className="container py-12 md:py-16 lg:py-20 ml-4 md:ml-8 lg:ml-12" id="about">
-          <div className="grid gap-8 md:grid-cols-2 md:gap-12 lg:gap-16">
-            <div className="flex flex-col items-start justify-center">
-              <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl">About Me</h2>
-              <p className="mt-4 text-gray-700 md:text-xl">
-                I specialize in full stack development with a focus on building scalable applications and creating comprehensive documentation. With two years of professional experience, I&apos;ve worked on a variety of projects ranging from web applications to technical content creation, ensuring high performance and user engagement.
-              </p>
-              <Link
-                href="/about"
-                className="mt-4 inline-flex h-9 items-center justify-center rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow transition-colors hover:bg-blue-700 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-blue-600"
-              >
-                Read More
-              </Link>
-            </div>
-            <div className="flex flex-col items-start justify-center">
-              <Image src="/profile.jpg" alt="Dennis Muvaa" width={300} height={300} className="rounded-full" />
+        <section className="py-12 bg-white shadow-inner" id="about">
+          <div className="container mx-auto px-4 max-w-5xl">
+            <div className="flex flex-col md:flex-row items-center gap-8">
+              <div className="md:w-1/3">
+                <Image 
+                  src="/profile.jpg" 
+                  alt="Dennis Muvaa" 
+                  width={250} 
+                  height={250} 
+                  className="rounded-full shadow-lg border-4 border-blue-200" 
+                />
+              </div>
+              <div className="md:w-2/3">
+                <h2 className="text-3xl font-bold tracking-tight text-gray-900 mb-4">About Me</h2>
+                <p className="text-lg text-gray-700 mb-6">
+                  I specialize in full stack development with a focus on building scalable applications and creating comprehensive documentation. With two years of professional experience, I've worked on a variety of projects ranging from web applications to technical content creation, ensuring high performance and user engagement.
+                </p>
+                <Link
+                  href="/about"
+                  className="inline-flex items-center justify-center rounded-md bg-blue-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
+                >
+                  Read More
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Software Engineering Section */}
-        <section className="container py-12 md:py-16 lg:py-20 ml-4 md:ml-8 lg:ml-12">
-          <div className="grid gap-8 md:grid-cols-2 md:gap-12 lg:gap-16">
-            <div className="flex flex-col items-start justify-center">
-              <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl">Software Engineering</h2>
-              <p className="mt-4 text-gray-700 md:text-xl">
-                Explore my work in software engineering, including web development, mobile apps, and more. I&apos;ve worked on projects involving complex API integrations, system design, and optimization.
-              </p>
-              <Link
-                href="/software-engineering"
-                className="mt-4 inline-flex h-9 items-center justify-center rounded-md bg-green-600 px-4 py-2 text-sm font-medium text-white shadow transition-colors hover:bg-green-700 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-green-600"
-              >
-                View Portfolio
-              </Link>
-            </div>
-            <div className="flex flex-col items-start justify-center">
-              <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl">Technical Writing</h2>
-              <p className="mt-4 text-gray-700 md:text-xl">
-                Check out my technical writing work, including blog posts, documentation, and more. My writing is focused on clear, concise, and accurate content that helps users and developers alike.
-              </p>
-              <Link
-                href="/technical-writing"
-                className="mt-4 inline-flex h-9 items-center justify-center rounded-md bg-purple-600 px-4 py-2 text-sm font-medium text-white shadow transition-colors hover:bg-purple-700 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-purple-600"
-              >
-                View Portfolio
-              </Link>
+        {/* Software Engineering and Technical Writing Section */}
+        <section className="py-12 bg-gradient-to-r from-blue-500 to-indigo-600 text-white">
+          <div className="container mx-auto px-4 max-w-5xl">
+            <div className="grid gap-8 md:grid-cols-2">
+              <div className="bg-white bg-opacity-10 p-6 rounded-lg backdrop-filter backdrop-blur-lg">
+                <h2 className="text-2xl font-bold tracking-tight mb-4">Software Engineering</h2>
+                <p className="text-lg mb-6">
+                  Explore my work in software engineering, including web development, mobile apps, and more. I've worked on projects involving complex API integrations, system design, and optimization.
+                </p>
+                <Link
+                  href="/software-engineering"
+                  className="inline-flex items-center justify-center rounded-md bg-white text-blue-600 px-6 py-3 text-base font-medium shadow-sm hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-600 transition-colors"
+                >
+                  View Portfolio
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </div>
+              <div className="bg-white bg-opacity-10 p-6 rounded-lg backdrop-filter backdrop-blur-lg">
+                <h2 className="text-2xl font-bold tracking-tight mb-4">Technical Writing</h2>
+                <p className="text-lg mb-6">
+                  Check out my technical writing work, including blog posts, documentation, and more. My writing is focused on clear, concise, and accurate content that helps users and developers alike.
+                </p>
+                <Link
+                  href="/technical-writing"
+                  className="inline-flex items-center justify-center rounded-md bg-white text-indigo-600 px-6 py-3 text-base font-medium shadow-sm hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600 transition-colors"
+                >
+                  View Portfolio
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </div>
             </div>
           </div>
         </section>
 
         {/* Education Section */}
-        <section className="container py-12 md:py-16 lg:py-20 ml-4 md:ml-8 lg:ml-12 text-center">
-          <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl mb-8">Education</h2>
-          <div className="grid gap-8 md:grid-cols-2 md:gap-12 lg:gap-16">
-            {/* ALX Africa */}
-            <div className="flex flex-col items-center justify-center">
-              <Image src="/images/alx-certificate.png" alt="ALX Certificate" width={600} height={400} className="rounded-md mb-4" />
-              <h3 className="text-xl font-semibold">Certificate in Software Engineering</h3>
-              <p className="text-gray-500">ALX Africa • Nairobi, Kenya • 2023</p>
-              <p className="mt-2 text-gray-700">
-                Awarded a Certificate in Software Engineering after 12 months of rigorous learning and practical application.
-              </p>
-            </div>
+        <section className="py-12 bg-gray-100">
+          <div className="container mx-auto px-4 max-w-5xl">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 mb-8 text-center">Education</h2>
+            <div className="grid gap-8 md:grid-cols-2">
+              {/* ALX Africa */}
+              <div className="bg-white p-6 rounded-lg shadow-md">
+                <Image src="/images/alx-certificate.png" alt="ALX Certificate" width={400} height={300} className="rounded-md mb-4 mx-auto" />
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">Certificate in Software Engineering</h3>
+                <p className="text-gray-600 mb-2">ALX Africa • Nairobi, Kenya • 2023</p>
+                <p className="text-gray-700">
+                  Awarded a Certificate in Software Engineering after 12 months of rigorous learning and practical application.
+                </p>
+              </div>
 
-            {/* Egerton University */}
-            <div className="flex flex-col items-center justify-center">
-              <h3 className="text-xl font-semibold">Bachelor of Arts in Economics</h3>
-              <p className="text-gray-500">Egerton University • Njoro, Kenya • 2018 • 3.9 GPA</p>
-              <p className="mt-2 text-gray-700">
-                Completed a Bachelor of Arts in Economics with a minor in History, graduating with Second Class Honors.
-              </p>
+              {/* Egerton University */}
+              <div className="bg-white p-6 rounded-lg shadow-md">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">Bachelor of Arts in Economics</h3>
+                <p className="text-gray-600 mb-2">Egerton University • Njoro, Kenya • 2018 • 3.9 GPA</p>
+                <p className="text-gray-700">
+                  Completed a Bachelor of Arts in Economics with a minor in History, graduating with Second Class Honors.
+                </p>
+              </div>
             </div>
           </div>
         </section>
 
         {/* Socials Section */}
-        <section className="container py-12 md:py-16 lg:py-20 ml-4 md:ml-8 lg:ml-12 text-center">
-          <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl mb-8">Socials</h2>
-          <div className="flex justify-center space-x-8">
-            <a href="https://www.linkedin.com/in/dennis-muvaa-76b84416b" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800">
-              <Image src="/logos/linkedin.svg" alt="LinkedIn" width={40} height={40} />
-              <span className="ml-2">LinkedIn</span>
-            </a>
-            <a href="https://github.com/dmuvaa" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-gray-800">
-              <Image src="/logos/github.svg" alt="GitHub" width={40} height={40} />
-              <span className="ml-2">GitHub</span>
-            </a>
-            <a href="https://www.techlivened.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800">
-              <Image src="/logos/blog.svg" alt="Blog" width={100} height={40} />
-              <span className="ml-2">Blog</span>
-            </a>
+        <section className="py-12 bg-gradient-to-br from-blue-600 to-indigo-700 text-white">
+          <div className="container mx-auto px-4 max-w-5xl">
+            <h2 className="text-3xl font-bold tracking-tight mb-8 text-center">Connect With Me</h2>
+            <div className="flex justify-center space-x-8">
+              <a href="https://www.linkedin.com/in/dennis-muvaa-76b84416b" target="_blank" rel="noopener noreferrer" className="flex items-center hover:text-blue-200 transition-colors">
+                <Linkedin className="h-8 w-8 mr-2" />
+                <span className="text-lg">LinkedIn</span>
+              </a>
+              <a href="https://github.com/dmuvaa" target="_blank" rel="noopener noreferrer" className="flex items-center hover:text-blue-200 transition-colors">
+                <Github className="h-8 w-8 mr-2" />
+                <span className="text-lg">GitHub</span>
+              </a>
+              <a href="https://www.techlivened.com" target="_blank" rel="noopener noreferrer" className="flex items-center hover:text-blue-200 transition-colors">
+                <Globe className="h-8 w-8 mr-2" />
+                <span className="text-lg">Blog</span>
+              </a>
+            </div>
           </div>
         </section>
       </main>
       <Footer />
     </div>
-  );
+  )
 }
