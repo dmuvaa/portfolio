@@ -25,15 +25,15 @@ export default function Home() {
                 <Image 
                   src="/profile.jpg" 
                   alt="Dennis Muvaa" 
-                  width={250} 
+                  width={200} 
                   height={250} 
-                  className="rounded-full shadow-lg border-4 border-blue-200" 
+                  className="rounded-full shadow-lg border-4 border-black object-cover" 
                 />
               </div>
               <div className="md:w-2/3">
                 <h2 className="text-3xl font-bold tracking-tight text-gray-900 mb-4">About Me</h2>
                 <p className="text-lg text-gray-700 mb-6">
-                  I specialize in full stack development with a focus on building scalable applications and creating comprehensive documentation. With two years of professional experience, I've worked on a variety of projects ranging from web applications to technical content creation, ensuring high performance and user engagement.
+                I am a full stack developer (with backend specialization) specializing in building scalable, high-performance applications with a strong focus on user engagement. With two years of professional experience, I have successfully delivered a range of projects, from dynamic web applications to in-depth technical content. My approach emphasizes not only robust development but also comprehensive documentation, ensuring clarity and maintainability across all projects.
                 </p>
                 <Link
                   href="/about"
@@ -48,17 +48,17 @@ export default function Home() {
         </section>
 
         {/* Software Engineering and Technical Writing Section */}
-        <section className="py-12 bg-gradient-to-r from-blue-500 to-indigo-600 text-white">
+        <section className="py-12 bg-gradient-to-r from-blue-300 to-indigo-300 text-black">
           <div className="container mx-auto px-4 max-w-5xl">
             <div className="grid gap-8 md:grid-cols-2">
               <div className="bg-white bg-opacity-10 p-6 rounded-lg backdrop-filter backdrop-blur-lg">
                 <h2 className="text-2xl font-bold tracking-tight mb-4">Software Engineering</h2>
                 <p className="text-lg mb-6">
-                  Explore my work in software engineering, including web development, mobile apps, and more. I've worked on projects involving complex API integrations, system design, and optimization.
+                  Explore my work in software engineering, including web development, mobile apps, and more. I&apos;ve worked on projects involving complex API integrations, system design, and optimization.
                 </p>
                 <Link
                   href="/software-engineering"
-                  className="inline-flex items-center justify-center rounded-md bg-white text-blue-600 px-6 py-3 text-base font-medium shadow-sm hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-600 transition-colors"
+                  className="inline-flex items-center justify-center rounded-md bg-green-600 text-black px-6 py-3 text-base font-medium shadow-sm hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-600 transition-colors"
                 >
                   View Portfolio
                   <ArrowRight className="ml-2 h-5 w-5" />
@@ -71,7 +71,7 @@ export default function Home() {
                 </p>
                 <Link
                   href="/technical-writing"
-                  className="inline-flex items-center justify-center rounded-md bg-white text-indigo-600 px-6 py-3 text-base font-medium shadow-sm hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600 transition-colors"
+                  className="inline-flex items-center justify-center rounded-md bg-purple-700 text-black px-6 py-3 text-base font-medium shadow-sm hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600 transition-colors"
                 >
                   View Portfolio
                   <ArrowRight className="ml-2 h-5 w-5" />
