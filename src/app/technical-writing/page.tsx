@@ -35,7 +35,7 @@ export default function TechnicalWriting() {
                 <ul className="mt-4 list-disc pl-5 space-y-2 text-left">
                   <li>Authored over 200 blog articles on diverse tech topics, driving a 400% increase in website traffic.</li>
                   <li>Improved user engagement and comprehension through clear, concise, and accurate technical writing.</li>
-                  <li>Enhanced the company's authority in the tech industry through in-depth coverage of topics like Ubuntu, Node.js, Nginx, AWS, and more.</li>
+                  <li>Enhanced the company&apos;s authority in the tech industry through in-depth coverage of topics like Ubuntu, Node.js, Nginx, AWS, and more.</li>
                   <li>Developed content that effectively reduced customer support inquiries by 30%.</li>
                 </ul>
               </div>
@@ -147,8 +147,8 @@ export default function TechnicalWriting() {
                 <h3 className="text-xl font-semibold mb-3 text-gray-800">nOps.io</h3>
                 <ul className="mt-4 list-disc pl-5 space-y-2 text-left text-gray-700">
                   <li>Part of the SEO strategy focusing on keyword optimization.</li>
-                  <li>Increased organic traffic by optimizing the site's structure and content for key industry terms.</li>
-                  <li>Implemented advanced keyword strategies, aligning content with nOps.io's business goals.</li>
+                  <li>Increased organic traffic by optimizing the site&apos;s structure and content for key industry terms.</li>
+                  <li>Implemented advanced keyword strategies, aligning content with nOps.io&apos;s business goals.</li>
                   <li>Regularly monitored SEO performance, making adjustments to maintain and improve rankings.</li>
                 </ul>
               </div>
@@ -199,7 +199,7 @@ export default function TechnicalWriting() {
 
               {/* Article 3 */}
               <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
-                <h3 className="text-xl font-semibold mb-2  text-gray-800">Microsoft Remote Desktop Services Security Best Practices</h3>
+                <h3 className="text-xl font-semibold mb-2  text-gray-800">Microsoft Remote Desktop Services Security Best  Practices</h3>
                 <p className="text-gray-700 mb-4">
                   Learn how to secure your Remote Desktop Services environment effectively.
                 </p>
