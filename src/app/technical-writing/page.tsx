@@ -1,313 +1,311 @@
-import Header from "../components/Header"
-import Footer from "../components/Footer"
 import Image from "next/image"
+import Link from "next/link"
+import { ArrowUpRight, ExternalLink } from "lucide-react"
+import PageShell from "../components/PageShell"
+import SectionHeading from "../components/SectionHeading"
+import { site } from "@/lib/site"
+
+const projects = [
+  {
+    title: "SEO Content Strategy — Hidden Lemur Media",
+    date: "Feb 2021 - Sep 2022",
+    points: [
+      "Developed and implemented a comprehensive SEO strategy that increased organic traffic by 150% over six months",
+      "Conducted comprehensive site audits and implemented strategic SEO improvements",
+      "Directed content creation and editorial processes for over 100 high-quality articles",
+      "Boosted organic search traffic by 335% through targeted keyword research using Ahrefs",
+    ],
+  },
+  {
+    title: "Technical Writing — Cloud Infrastructure Services",
+    date: "July 2022 - April 2024",
+    points: [
+      "Authored over 200 blog articles on diverse tech topics, driving a 400% increase in website traffic",
+      "Improved user engagement and comprehension through clear, concise, and accurate technical writing",
+      "Enhanced the company's authority in the tech industry through in-depth coverage of Ubuntu, Node.js, Nginx, AWS, and more",
+      "Developed content that effectively reduced customer support inquiries by 30%",
+    ],
+  },
+  {
+    title: "Cloud Writer — nOps.io",
+    date: "May 2021 - May 2022",
+    points: [
+      "Produced detailed documentation on AWS Cloud Services, significantly reducing integration time",
+      "Created and optimized a glossary page, improving search engine rankings by 525%",
+      "Improved SEO performance, resulting in a 1000% increase in organic traffic within six months",
+      "Developed technical documentation that reduced customer support inquiries by 30%",
+    ],
+  },
+]
+
+const seoExpertise = [
+  {
+    title: "Programmatic SEO",
+    side: "left" as const,
+    points: [
+      "Creates and manages large-scale programmatic SEO campaigns, automating content creation across numerous pages",
+      "Utilizes data-driven approaches to generate pages targeting long-tail keywords",
+      "Integrates with CMS to dynamically generate optimized content",
+      "Monitors performance using analytics tools, adjusting strategies to maximize organic traffic",
+    ],
+  },
+  {
+    title: "Site Audits",
+    side: "right" as const,
+    points: [
+      "Performs comprehensive site audits using Ahrefs, SEMrush, and Google Search Console",
+      "Analyzes on-page elements like meta tags, headers, and content structure",
+      "Optimizes site speed, mobile usability, and security",
+      "Provides actionable audit reports to improve site health and search visibility",
+    ],
+  },
+  {
+    title: "Keyword Research",
+    side: "left" as const,
+    points: [
+      "Conducts thorough keyword research to uncover high-value keywords aligned with business goals",
+      "Analyzes search intent to ensure content meets user expectations",
+      "Tracks keyword rankings and trends to refine strategies",
+      "Balances short-term wins with long-term growth",
+    ],
+  },
+  {
+    title: "Server Side Rendering (Next.js)",
+    side: "right" as const,
+    points: [
+      "Implements SSR with Next.js to enhance page load speed and SEO performance",
+      "Ensures content is fully rendered on the server before delivery",
+      "Optimizes SSR configurations to balance performance with resource usage",
+      "Continuously refines SSR setups to adapt to search engine algorithm changes",
+    ],
+  },
+  {
+    title: "Featured Snippets",
+    side: "left" as const,
+    points: [
+      "Structures content to target and capture featured snippets",
+      "Uses schema markup and formatting to make content more attractive for snippet inclusion",
+      "Crafts concise answers to common queries",
+      "Monitors snippet performance to maintain visibility",
+    ],
+  },
+]
+
+const seoProjects = [
+  {
+    title: "nOps.io",
+    points: [
+      "Part of the SEO strategy focusing on keyword optimization",
+      "Increased organic traffic by optimizing site structure and content for key industry terms",
+      "Implemented advanced keyword strategies aligned with business goals",
+      "Regularly monitored SEO performance, making adjustments to maintain rankings",
+    ],
+  },
+  {
+    title: "Hiddenlemur Media",
+    points: [
+      "Developed and executed comprehensive SEO strategies including content creation and keyword optimization",
+      "Conducted regular site audits and keyword research",
+      "Tracked KPIs to measure the success of SEO initiatives",
+    ],
+  },
+  {
+    title: "Cloud Infrastructure Services Ltd",
+    points: [
+      "Drove SEO efforts through server-side rendering, site audits, and content optimization",
+      "Strategically targeted high-value search queries",
+      "Enhanced technical SEO aspects like site speed, mobile optimization, and security",
+      "Analyzed SEO performance data for continuous improvement",
+    ],
+  },
+]
+
+const articles = [
+  {
+    title: "Server-Side Rendering in Next.js for SEO",
+    description: "Explore the benefits of SSR in Next.js and its impact on SEO performance.",
+    url: "https://www.techlivened.com/server-side-rendering-in-nextjs-for-seo",
+  },
+  {
+    title: "React Hooks Explained",
+    description: "A comprehensive guide to understanding and using React Hooks effectively.",
+    url: "https://www.techlivened.com/react-hooks-explained",
+  },
+  {
+    title: "Microsoft Remote Desktop Services Security Best Practices",
+    description: "Learn how to secure your Remote Desktop Services environment effectively.",
+    url: "https://cloudinfrastructureservices.co.uk/microsoft-remote-desktop-services-security-best-practices/",
+  },
+  {
+    title: "Implementing Caching in Node.js",
+    description: "Discover techniques to improve Node.js application performance through caching.",
+    url: "https://www.techlivened.com/implementing-caching-in-node-js",
+  },
+  {
+    title: "NumPy vs Pandas in 2024",
+    description: "A comparison of two popular Python libraries for data manipulation and analysis.",
+    url: "https://www.techlivened.com/numpy-vs-pandas-in-2024",
+  },
+  {
+    title: "Best AI Tools to Generate Images",
+    description: "An overview of the top AI-powered image generation tools available in the market.",
+    url: "https://www.techlivened.com/best-ai-tools-to-generate-images",
+  },
+  {
+    title: "GitLab Integration: Integrating GitLab with Other Tools and Services",
+    description: "Learn how to integrate GitLab with various development tools and services.",
+    url: "https://cloudinfrastructureservices.co.uk/gitlab-integration-integrating-gitlab-with-other-tools-and-services/",
+  },
+]
+
+const skillGroups = [
+  {
+    title: "Technical Writing",
+    skills: [
+      { name: "Markdown", logo: "/logos/markdown.svg" },
+      { name: "GitHub", logo: "/logos/github.svg" },
+      { name: "Microsoft Word", logo: "/logos/word.svg" },
+    ],
+  },
+  {
+    title: "SEO",
+    skills: [
+      { name: "Ahrefs", logo: "/logos/ahrefs.svg" },
+      { name: "Google Analytics", logo: "/logos/google-analytics.svg" },
+      { name: "WordPress", logo: "/logos/wordpress.svg" },
+    ],
+  },
+  {
+    title: "Content Creation",
+    skills: [{ name: "Figma", logo: "/logos/figma.svg" }],
+  },
+]
 
 export default function TechnicalWriting() {
   return (
-    <div className="flex min-h-screen flex-col">
-      <Header />
-      <main className="flex-1 bg-gray-50 py-12">
-        <div className="container mx-auto px-4 md:px-6 text-center">
-          {/* Main Heading and Introduction */}
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Technical Writing Experience</h2>
-          <p className="text-gray-700 mb-12">
-            I have extensive experience in technical writing, where I&apos;ve specialized in creating comprehensive documentation, SEO strategies, and content that enhances user engagement. My work spans across multiple domains including cloud infrastructure, SEO content strategy, and technical documentation for software products. My aim is to make complex technical concepts accessible and understandable to a wide audience, while also driving organic traffic through targeted content creation.
-          </p>
+    <PageShell>
+      <div className="mx-auto max-w-5xl px-4 py-16 md:px-6 md:py-20">
+        <SectionHeading
+          index="00"
+          title="Technical Writing"
+          description="Documentation, SEO strategy, and content that makes complex technical concepts accessible — while driving organic traffic through targeted creation."
+        />
 
-          {/* Projects Section */}
-          <section id="projects" className="mb-12">
-            <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-              {/* Project 1 */}
-              <div className="bg-white p-6 rounded-lg shadow-lg">
-                <h3 className="text-xl font-semibold">SEO Content Strategy - Hidden Lemur Media</h3>
-                <p className="text-gray-600">Feb 2021 - Sep 2022</p>
-                <ul className="mt-4 list-disc pl-5 space-y-2 text-left">
-                  <li>Developed and implemented a comprehensive SEO strategy that increased organic traffic by 150% over six months.</li>
-                  <li>Conducted comprehensive site audits and implemented strategic SEO improvements.</li>
-                  <li>Directed content creation and editorial processes for over 100 high-quality articles.</li>
-                  <li>Boosted organic search traffic by 335% through targeted keyword research using Ahrefs.</li>
+        <section className="mb-16">
+          <SectionHeading index="01" title="Experience" />
+          <div className="grid gap-4 md:grid-cols-3">
+            {projects.map((project) => (
+              <article key={project.title} className="panel p-6">
+                <h3 className="text-base font-medium leading-snug text-foreground">
+                  {project.title}
+                </h3>
+                <p className="meta mt-2">{project.date}</p>
+                <ul className="mt-4 space-y-2">
+                  {project.points.map((point) => (
+                    <li key={point} className="flex gap-2 text-sm text-muted">
+                      <span className="font-mono text-accent">-</span>
+                      {point}
+                    </li>
+                  ))}
                 </ul>
-              </div>
-              {/* Project 2 */}
-              <div className="bg-white p-6 rounded-lg shadow-lg">
-                <h3 className="text-xl font-semibold">Technical Writing - Cloud Infrastructure Services</h3>
-                <p className="text-gray-600">July 2022 - April 2024</p>
-                <ul className="mt-4 list-disc pl-5 space-y-2 text-left">
-                  <li>Authored over 200 blog articles on diverse tech topics, driving a 400% increase in website traffic.</li>
-                  <li>Improved user engagement and comprehension through clear, concise, and accurate technical writing.</li>
-                  <li>Enhanced the company&apos;s authority in the tech industry through in-depth coverage of topics like Ubuntu, Node.js, Nginx, AWS, and more.</li>
-                  <li>Developed content that effectively reduced customer support inquiries by 30%.</li>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="mb-16">
+          <SectionHeading index="02" title="SEO Expertise" />
+          <div className="space-y-4">
+            {seoExpertise.map((item, i) => (
+              <article
+                key={item.title}
+                className={`panel p-6 md:w-[85%] ${item.side === "right" ? "md:ml-auto" : ""}`}
+              >
+                <p className="section-label mb-2">{String(i + 1).padStart(2, "0")}</p>
+                <h3 className="text-lg font-medium text-foreground">{item.title}</h3>
+                <ul className="mt-4 space-y-2">
+                  {item.points.map((point) => (
+                    <li key={point} className="flex gap-2 text-sm text-muted">
+                      <ArrowUpRight className="mt-0.5 size-3 shrink-0 text-accent" />
+                      {point}
+                    </li>
+                  ))}
                 </ul>
-              </div>
-              {/* Project 3 */}
-              <div className="bg-white p-6 rounded-lg shadow-lg">
-                <h3 className="text-xl font-semibold">Cloud Writer - nOps.io</h3>
-                <p className="text-gray-600">May 2021 - May 2022</p>
-                <ul className="mt-4 list-disc pl-5 space-y-2 text-left">
-                  <li>Produced detailed and comprehensive documentation on AWS Cloud Services, significantly reducing integration time.</li>
-                  <li>Created and optimized a glossary page, improving search engine rankings by 525%.</li>
-                  <li>Improved SEO performance, resulting in a 1000% increase in organic traffic within six months.</li>
-                  <li>Developed technical documentation that reduced customer support inquiries by 30%.</li>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="mb-16">
+          <SectionHeading index="03" title="SEO Projects" />
+          <div className="grid gap-4 md:grid-cols-3">
+            {seoProjects.map((project) => (
+              <article key={project.title} className="panel panel-hover p-6">
+                <h3 className="font-mono text-sm text-accent">{project.title}</h3>
+                <ul className="mt-4 space-y-2">
+                  {project.points.map((point) => (
+                    <li key={point} className="text-sm text-muted">
+                      {point}
+                    </li>
+                  ))}
                 </ul>
-              </div>
-            </div>
-          </section>
+              </article>
+            ))}
+          </div>
+        </section>
 
-          {/* SEO Expertise Section */}
-          <section id="seo-expertise" className="mb-12 relative">
-            <h2 className="text-3xl font-bold text-gray-900 mb-16 text-center">SEO Expertise</h2>
+        <section className="mb-16">
+          <SectionHeading index="04" title="Article Samples" />
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {articles.map((article) => (
+              <article key={article.url} className="panel panel-hover flex flex-col p-6">
+                <h3 className="text-base font-medium leading-snug text-foreground">
+                  {article.title}
+                </h3>
+                <p className="mt-3 flex-1 text-sm text-muted">{article.description}</p>
+                <a
+                  href={article.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link-arrow mt-6"
+                >
+                  read article
+                  <ExternalLink className="size-4" />
+                </a>
+              </article>
+            ))}
+          </div>
 
-            {/* Central Branch Line */}
-            <div className="absolute top-[5rem] bottom-0 left-1/2 transform -translate-x-1/2 w-0.5 bg-gray-300"></div>
+          <div className="mt-10 text-center">
+            <Link href={site.links.blog} className="link-arrow justify-center">
+              more on techlivened.com
+              <ArrowUpRight className="size-4" />
+            </Link>
+          </div>
+        </section>
 
-            <div className="space-y-12 relative z-10">
-              {/* Programmatic SEO (Left) */}
-              <div className="flex justify-end items-center w-full relative">
-                {/* Connector Line */}
-                <div className="absolute right-[calc(50%-2rem)] w-8 h-0.5 bg-gray-300 transform translate-y-4"></div>
-                <div className="w-5/12 ml-6">
-                  <h3 className="text-xl font-semibold mb-3">Programmatic SEO</h3>
-                  <ul className="mt-4 list-disc pl-5 space-y-2 text-left text-gray-700">
-                    <li>Creates and manages large-scale programmatic SEO campaigns, automating content creation across numerous pages.</li>
-                    <li>Utilizes data-driven approaches to generate pages targeting long-tail keywords, driving significant organic traffic growth.</li>
-                    <li>Integrates with CMS to dynamically generate optimized content, ensuring consistency and SEO best practices.</li>
-                    <li>Monitors performance using analytics tools, adjusting strategies to maximize organic traffic and conversions.</li>
-                  </ul>
+        <section>
+          <SectionHeading index="05" title="Tools & Skills" />
+          <div className="grid gap-4 md:grid-cols-3">
+            {skillGroups.map((group) => (
+              <div key={group.title} className="panel p-6">
+                <h3 className="font-mono text-sm text-accent">{group.title.toLowerCase()}</h3>
+                <div className="mt-4 flex flex-wrap gap-3">
+                  {group.skills.map((skill) => (
+                    <div
+                      key={skill.name}
+                      className="inline-flex items-center gap-2 border border-border bg-surface-hover px-3 py-1.5"
+                    >
+                      <Image src={skill.logo} alt={skill.name} width={18} height={18} />
+                      <span className="font-mono text-xs text-muted">{skill.name}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
-
-              {/* Site Audits (Right) */}
-              <div className="flex justify-start items-center w-full relative">
-                {/* Connector Line */}
-                <div className="absolute left-[calc(50%-2rem)] w-8 h-0.5 bg-gray-300 transform translate-y-4"></div>
-                <div className="w-5/12 mr-6">
-                  <h3 className="text-xl font-semibold mb-3">Site Audits</h3>
-                  <ul className="mt-4 list-disc pl-5 space-y-2 text-left text-gray-700">
-                    <li>Performs comprehensive site audits using Ahrefs, SEMrush, and Google Search Console to identify technical SEO issues.</li>
-                    <li>Analyzes on-page elements like meta tags, headers, and content structure for SEO optimization.</li>
-                    <li>Optimizes site speed, mobile usability, and security, aligning with key search engine ranking factors.</li>
-                    <li>Provides actionable audit reports to improve site health and search engine visibility.</li>
-                  </ul>
-                </div>
-              </div>
-
-              {/* Keyword Research (Left) */}
-              <div className="flex justify-end items-center w-full relative">
-                {/* Connector Line */}
-                <div className="absolute right-[calc(50%-2rem)] w-8 h-0.5 bg-gray-300 transform translate-y-4"></div>
-                <div className="w-5/12 ml-6">
-                  <h3 className="text-xl font-semibold mb-3">Keyword Research</h3>
-                  <ul className="mt-4 list-disc pl-5 space-y-2 text-left text-gray-700">
-                    <li>Conducts thorough keyword research to uncover high-value keywords that align with business goals.</li>
-                    <li>Analyzes search intent to ensure content meets user expectations and drives organic traffic.</li>
-                    <li>Tracks keyword rankings and trends to refine strategies for maintaining competitive SERP positions.</li>
-                    <li>Balances short-term wins with long-term growth, targeting both high-traffic and low-competition keywords.</li>
-                  </ul>
-                </div>
-              </div>
-
-              {/* Server Side Rendering (Right) */}
-              <div className="flex justify-start items-center w-full relative">
-                {/* Connector Line */}
-                <div className="absolute left-[calc(50%-2rem)] w-8 h-0.5 bg-gray-300 transform translate-y-4"></div>
-                <div className="w-5/12 mr-6">
-                  <h3 className="text-xl font-semibold mb-3">Server Side Rendering (Next.js)</h3>
-                  <ul className="mt-4 list-disc pl-5 space-y-2 text-left text-gray-700">
-                    <li>Implements Server Side Rendering (SSR) with Next.js to enhance page load speed and SEO performance.</li>
-                    <li>Ensures content is fully rendered on the server before delivery, improving crawlability by search engines.</li>
-                    <li>Optimizes SSR configurations to balance performance with resource usage, enhancing user experience.</li>
-                    <li>Continuously refines SSR setups to adapt to changes in search engine algorithms and user behavior.</li>
-                  </ul>
-                </div>
-              </div>
-
-              {/* Featured Snippets (Left) */}
-              <div className="flex justify-end items-center w-full relative">
-                {/* Connector Line */}
-                <div className="absolute right-[calc(50%-2rem)] w-8 h-0.5 bg-gray-300 transform translate-y-4"></div>
-                <div className="w-5/12 ml-6">
-                  <h3 className="text-xl font-semibold mb-3">Featured Snippets</h3>
-                  <ul className="mt-4 list-disc pl-5 space-y-2 text-left text-gray-700">
-                    <li>Structures content to target and capture featured snippets, driving higher click-through rates.</li>
-                    <li>Uses schema markup and formatting to make content more attractive for snippet inclusion.</li>
-                    <li>Crafts concise answers to common queries, meeting criteria for snippet selection by search engines.</li>
-                    <li>Monitors snippet performance to maintain visibility and adapt to evolving search behaviors.</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* SEO Projects Section */}
-          <section id="seo-projects" className="mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">SEO Projects</h2>
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {/* nOps.io */}
-              <div className="bg-white border border-gray-200 p-6 rounded-lg shadow-sm transition transform hover:shadow-md">
-                <h3 className="text-xl font-semibold mb-3 text-gray-800">nOps.io</h3>
-                <ul className="mt-4 list-disc pl-5 space-y-2 text-left text-gray-700">
-                  <li>Part of the SEO strategy focusing on keyword optimization.</li>
-                  <li>Increased organic traffic by optimizing the site&apos;s structure and content for key industry terms.</li>
-                  <li>Implemented advanced keyword strategies, aligning content with nOps.io&apos;s business goals.</li>
-                  <li>Regularly monitored SEO performance, making adjustments to maintain and improve rankings.</li>
-                </ul>
-              </div>
-              {/* Hiddenlemur Media */}
-              <div className="bg-white border border-gray-200 p-6 rounded-lg shadow-sm transition transform hover:shadow-md">
-                <h3 className="text-xl font-semibold mb-3 text-gray-800">Hiddenlemur Media</h3>
-                <ul className="mt-4 list-disc pl-5 space-y-2 text-left text-gray-700">
-                  <li>Developed and executed comprehensive SEO strategies, including content creation and keyword optimization.</li>
-                  <li>Conducted regular site audits and keyword research, ensuring competitiveness and alignment with search trends.</li>
-                  <li>Tracked KPIs to measure the success of SEO initiatives, providing insights for future strategies.</li>
-                </ul>
-              </div>
-              {/* Cloud Infrastructure Services Ltd */}
-              <div className="bg-white border border-gray-200 p-6 rounded-lg shadow-sm transition transform hover:shadow-md">
-                <h3 className="text-xl font-semibold mb-3 text-gray-800">Cloud Infrastructure Services Ltd</h3>
-                <ul className="mt-4 list-disc pl-5 space-y-2 text-left text-gray-700">
-                  <li>Drove SEO efforts, improving search rankings and traffic through server-side rendering, site audits, and content optimization.</li>
-                  <li>Strategically targeted high-value search queries, increasing visibility and user engagement.</li>
-                  <li>Enhanced technical SEO aspects like site speed, mobile optimization, and security features.</li>
-                  <li>Analyzed SEO performance data, providing actionable insights for continuous improvement.</li>
-                </ul>
-              </div>
-            </div>
-          </section>
-
-          {/* Top Article Samples Section */}
-          <section id="top-article-samples" className="mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Top Article Samples</h2>
-
-            <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-              {/* Article 1 */}
-              <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
-                <h3 className="text-xl font-semibold mb-2 text-gray-800">Server-Side Rendering in Next.js for SEO</h3>
-                <p className="text-gray-700 mb-4">
-                  Explore the benefits of SSR in Next.js and its impact on SEO performance.
-                </p>
-                <a href="https://www.techlivened.com/server-side-rendering-in-nextjs-for-seo" target="_blank" rel="noopener noreferrer" className="inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">View Full Article</a>
-              </div>
-
-              {/* Article 2 */}
-              <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
-                <h3 className="text-xl font-semibold mb-2 text-gray-800">React Hooks Explained</h3>
-                <p className="text-gray-700 mb-4">
-                  A comprehensive guide to understanding and using React Hooks effectively.
-                </p>
-                <a href="https://www.techlivened.com/react-hooks-explained" target="_blank" rel="noopener noreferrer" className="inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">View Full Article</a>
-              </div>
-
-              {/* Article 3 */}
-              <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
-                <h3 className="text-xl font-semibold mb-2  text-gray-800">Microsoft Remote Desktop Services Security Best  Practices</h3>
-                <p className="text-gray-700 mb-4">
-                  Learn how to secure your Remote Desktop Services environment effectively.
-                </p>
-                <a href="https://cloudinfrastructureservices.co.uk/microsoft-remote-desktop-services-security-best-practices/" target="_blank" rel="noopener noreferrer" className="inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">View Full Article</a>
-              </div>
-
-              {/* Article 4 */}
-              <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
-                <h3 className="text-xl font-semibold mb-2 text-gray-800">Implementing Caching in Node.js</h3>
-                <p className="text-gray-700 mb-4">
-                  Discover techniques to improve Node.js application performance through caching.
-                </p>
-                <a href="https://www.techlivened.com/implementing-caching-in-node-js" target="_blank" rel="noopener noreferrer" className="inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">View Full Article</a>
-              </div>
-
-              {/* Article 5 */}
-              <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
-                <h3 className="text-xl font-semibold mb-2 text-gray-800">NumPy vs Pandas in 2024</h3>
-                <p className="text-gray-700 mb-4">
-                  A comparison of two popular Python libraries for data manipulation and analysis.
-                </p>
-                <a href="https://www.techlivened.com/numpy-vs-pandas-in-2024" target="_blank" rel="noopener noreferrer" className="inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">View Full Article</a>
-              </div>
-
-              {/* Article 6 */}
-              <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
-                <h3 className="text-xl font-semibold mb-2 text-gray-800">Best AI Tools to Generate Images</h3>
-                <p className="text-gray-700 mb-4">
-                  An overview of the top AI-powered image generation tools available in the market.
-                </p>
-                <a href="https://www.techlivened.com/best-ai-tools-to-generate-images" target="_blank" rel="noopener noreferrer" className="inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">View Full Article</a>
-              </div>
-
-              {/* Article 7 */}
-              <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
-                <h3 className="text-xl font-semibold mb-2 text-gray-800">GitLab Integration: Integrating GitLab with Other Tools and Services</h3>
-                <p className="text-gray-700 mb-4">
-                  Learn how to integrate GitLab with various development tools and services for improved workflow.
-                </p>
-                <a href="https://cloudinfrastructureservices.co.uk/gitlab-integration-integrating-gitlab-with-other-tools-and-services/" target="_blank" rel="noopener noreferrer" className="inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">View Full Article</a>
-              </div>
-            </div>
-
-            {/* Button to Personal Blog */}
-            <div className="mt-12 text-center">
-              <a href="https://www.techlivened.com/" target="_blank" rel="noopener noreferrer" className="inline-block bg-blue-600 text-white px-8 py-3 rounded-md hover:bg-blue-700 transition">
-                Check My Personal Blog for More Articles
-              </a>
-            </div>
-          </section>
-
-          {/* Skills Section */}
-          <section id="skills" className="mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Technical Writing Skills</h2>
-            <div className="space-y-12">
-              {/* Technical Writing Skills */}
-              <div className="bg-white p-6 rounded-lg shadow-lg">
-                <h3 className="text-xl font-semibold mb-4">Technical Writing</h3>
-                <div className="flex flex-wrap gap-4 justify-center">
-                  <div className="flex items-center">
-                    <Image src="/logos/markdown.svg" alt="Markdown" width={40} height={40} />
-                    <span className="ml-2 text-gray-700">Markdown</span>
-                  </div>
-                  <div className="flex items-center">
-                    <Image src="/logos/github.svg" alt="GitHub" width={40} height={40} />
-                    <span className="ml-2 text-gray-700">GitHub</span>
-                  </div>
-                  <div className="flex items-center">
-                    <Image src="/logos/word.svg" alt="Microsoft Word" width={40} height={40} />
-                    <span className="ml-2 text-gray-700">Microsoft Word</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* SEO Skills */}
-              <div className="bg-white p-6 rounded-lg shadow-lg">
-                <h3 className="text-xl font-semibold mb-4">SEO</h3>
-                <div className="flex flex-wrap gap-4 justify-center">
-                  <div className="flex items-center">
-                    <Image src="/logos/ahrefs.svg" alt="Ahrefs" width={40} height={40} />
-                    <span className="ml-2 text-gray-700">Ahrefs</span>
-                  </div>
-                  <div className="flex items-center">
-                    <Image src="/logos/google-analytics.svg" alt="Google Analytics" width={40} height={40} />
-                    <span className="ml-2 text-gray-700">Google Analytics</span>
-                  </div>
-                  <div className="flex items-center">
-                    <Image src="/logos/wordpress.svg" alt="WordPress" width={40} height={40} />
-                    <span className="ml-2 text-gray-700">WordPress</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Content Creation Skills */}
-              <div className="bg-white p-6 rounded-lg shadow-lg">
-                <h3 className="text-xl font-semibold mb-4">Content Creation</h3>
-                <div className="flex flex-wrap gap-4 justify-center">
-                  <div className="flex items-center">
-                    <Image src="/logos/figma.svg" alt="Figma" width={40} height={40} />
-                    <span className="ml-2 text-gray-700">Figma</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-        </div>
-      </main>
-      <Footer />
-    </div>
+            ))}
+          </div>
+        </section>
+      </div>
+    </PageShell>
   )
 }

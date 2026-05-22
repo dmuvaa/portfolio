@@ -1,63 +1,70 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Mail, Phone, Linkedin } from "lucide-react"
-import Header from "../components/Header"
-import Footer from "../components/Footer"
 import Link from "next/link"
+import { ArrowUpRight, Linkedin, Mail, Phone } from "lucide-react"
+import PageShell from "../components/PageShell"
+import SectionHeading from "../components/SectionHeading"
+import { site } from "@/lib/site"
+
+const channels = [
+  {
+    icon: Mail,
+    label: "Email",
+    value: site.email,
+    href: `mailto:${site.email}`,
+  },
+  {
+    icon: Phone,
+    label: "WhatsApp",
+    value: site.phone,
+    href: "https://wa.me/728921448",
+  },
+  {
+    icon: Linkedin,
+    label: "LinkedIn",
+    value: "linkedin.com/in/dennismuvaa",
+    href: site.links.linkedin,
+  },
+]
 
 export default function ContactPage() {
   return (
-    <>
-      <Header />
-      <main className="container mx-auto px-4 py-8 max-w-2xl">
-        <h1 className="text-4xl font-bold mb-8">Contact Me</h1>
-        
-        <Card>
-          <CardHeader>
-            <CardTitle>Get in Touch</CardTitle>
-            <CardDescription>Feel free to reach out through any of these channels.</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-6">
-            <div className="flex items-center space-x-4">
-              <Mail className="h-6 w-6 text-muted-foreground" />
+    <PageShell>
+      <div className="mx-auto max-w-2xl px-4 py-16 md:px-6 md:py-20">
+        <SectionHeading
+          index="00"
+          title="Contact"
+          description="Reach out for engineering work, writing collaborations, or just to say hello."
+        />
+
+        <div className="panel divide-y divide-border">
+          {channels.map(({ icon: Icon, label, value, href }) => (
+            <div key={label} className="flex items-start gap-4 p-6">
+              <div className="flex size-10 items-center justify-center border border-border bg-surface-hover">
+                <Icon className="size-4 text-accent" />
+              </div>
               <div>
-                <h2 className="text-lg font-semibold">Email</h2>
-                <Link href="mailto:dennis@example.com" className="text-primary hover:underline">
-                  dmuvaa70@gmail.com
+                <p className="meta">{label.toLowerCase()}</p>
+                <Link
+                  href={href}
+                  className="mt-1 block text-sm text-foreground transition-colors hover:text-accent"
+                >
+                  {value}
                 </Link>
               </div>
             </div>
-            <div className="flex items-center space-x-4">
-              <Phone className="h-6 w-6 text-muted-foreground" />
-              <div>
-                <h2 className="text-lg font-semibold">WhatsApp</h2>
-                <Link href="https://wa.me/728921448" className="text-primary hover:underline">
-                  +254 728921448
-                </Link>
-              </div>
-            </div>
-            <div className="flex items-center space-x-4">
-              <Linkedin className="h-6 w-6 text-muted-foreground" />
-              <div>
-                <h2 className="text-lg font-semibold">LinkedIn</h2>
-                <Link href="https://www.linkedin.com/in/dennis-muvaa-76b84416b/" className="text-primary hover:underline">
-                  linkedin.com/in/dennismuvaa
-                </Link>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+          ))}
+        </div>
 
         <div className="mt-8 text-center">
-          <p className="mb-4">Prefer to connect on social media?</p>
-          <Button asChild>
-            <Link href="https://www.linkedin.com/in/dennis-muvaa-76b84416b/">
-              Connect on LinkedIn
-            </Link>
-          </Button>
+          <p className="mb-4 text-sm text-muted">Prefer social?</p>
+          <Link
+            href={site.links.linkedin}
+            className="link-arrow justify-center"
+          >
+            connect on linkedin
+            <ArrowUpRight className="size-4" />
+          </Link>
         </div>
-      </main>
-      <Footer />
-    </>
+      </div>
+    </PageShell>
   )
 }
