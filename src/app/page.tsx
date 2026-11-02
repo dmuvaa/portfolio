@@ -5,13 +5,13 @@ import PageShell from "./components/PageShell"
 import Hero from "./components/Hero"
 import SectionHeading from "./components/SectionHeading"
 import { site } from "@/lib/site"
+import { projects } from "@/lib/projects"
 
 const focusAreas = [
   {
     index: "01",
     title: "Software Engineering",
-    description:
-      "Scalable backends, full-stack apps, and systems that hold up under real traffic.",
+    description: `${projects.length} recent builds — AI products, games, SEO tools, and client sites shipping on Next.js.`,
     href: "/software-engineering",
     cta: "view projects",
   },

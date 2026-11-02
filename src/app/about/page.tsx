@@ -1,6 +1,7 @@
 import { Badge } from "@/components/ui/badge"
 import PageShell from "../components/PageShell"
 import SectionHeading from "../components/SectionHeading"
+import { currentProjectNames } from "@/lib/projects"
 
 const sections = [
   {
@@ -21,7 +22,7 @@ const sections = [
   {
     index: "03",
     title: "Current Projects",
-    projects: ["Upcovered", "Global Workspaces", "Thesis Corner", "Coursework AI"],
+    projects: [...currentProjectNames],
   },
   {
     index: "04",
