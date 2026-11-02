@@ -2,27 +2,86 @@
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
+@custom-variant light (&:is(.light *));
 
-@config "../../tailwind.config.ts";
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-line-2: var(--line-2);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-accent: var(--accent);
+  --color-accent-dim: var(--accent-dim);
+  --color-on-accent: var(--on-accent);
 
-@theme {
+  /* Compatibility aliases used by existing pages during migration */
+  --color-background: var(--color-bg);
+  --color-foreground: var(--color-fg);
+  --color-border: var(--color-line);
+  --color-surface-hover: var(--color-surface-2);
+  --color-accent-muted: var(--color-accent-dim);
+  --color-muted-foreground: var(--color-muted);
+
   --font-sans: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
 
-  --color-background: #0a0a0c;
-  --color-foreground: #ececef;
-  --color-muted: #8b8b96;
-  --color-muted-foreground: #71717a;
-  --color-border: #232329;
-  --color-surface: #111114;
-  --color-surface-hover: #16161b;
-  --color-accent: #6ee7a8;
-  --color-accent-muted: #2d4a3a;
+  --animate-blink: blink 1.2s step-end infinite;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Dark (default) */
+:root {
+  color-scheme: dark;
+  --bg: #0a0a0c;
+  --surface: #111114;
+  --surface-2: #18181d;
+  --line: #232329;
+  --line-2: #2e2e36;
+  --fg: #ececef;
+  --muted: #a1a1aa;
+  --subtle: #8b8b96;
+  --accent: #6ee7a8;
+  --accent-dim: #1f3d30;
+  --on-accent: #06140c;
+  --grid-line: rgb(255 255 255 / 0.035);
+  --glow: rgb(110 231 168 / 0.14);
+  --header-bg: rgb(10 10 12 / 0.82);
+}
+
+/* Light */
+html.light {
+  color-scheme: light;
+  --bg: #f3f4f6;
+  --surface: #ffffff;
+  --surface-2: #e8eaef;
+  --line: #d7dae2;
+  --line-2: #c3c7d2;
+  --fg: #000000;
+  --muted: #111111;
+  --subtle: #1a1a1a;
+  --accent: #0b7a52;
+  --accent-dim: #d8f3e6;
+  --on-accent: #ffffff;
+  --grid-line: rgb(15 23 42 / 0.06);
+  --glow: rgb(11 122 82 / 0.12);
+  --header-bg: rgb(243 244 246 / 0.88);
 }
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-line;
   }
 
   html {
@@ -30,15 +89,19 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans;
-    background-image:
-      linear-gradient(to right, rgb(255 255 255 / 0.015) 1px, transparent 1px),
-      linear-gradient(to bottom, rgb(255 255 255 / 0.015) 1px, transparent 1px);
-    background-size: 48px 48px;
+    @apply bg-bg text-fg font-sans text-[17px] leading-relaxed md:text-lg;
+    transition:
+      background-color 180ms ease,
+      color 180ms ease;
   }
 
   ::selection {
-    @apply bg-accent/25 text-foreground;
+    @apply bg-accent/25 text-fg;
+  }
+
+  a:focus-visible,
+  button:focus-visible {
+    @apply outline-2 outline-offset-2 outline-accent;
   }
 }
 
@@ -47,23 +110,70 @@
     text-wrap: balance;
   }
 
+  .grid-bg {
+    background-image:
+      linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 20%, transparent 75%);
+  }
+
+  .hero-glow {
+    background: radial-gradient(
+      ellipse 60% 50% at 70% 20%,
+      var(--glow),
+      transparent 70%
+    );
+  }
+
+  .section-pad {
+    @apply py-16 md:py-24;
+  }
+
   .panel {
-    @apply border border-border bg-surface transition-colors duration-200;
+    @apply rounded-2xl border border-line bg-surface transition-colors duration-200;
   }
 
   .panel-hover {
-    @apply hover:border-accent/30 hover:bg-surface-hover;
+    @apply hover:border-accent/50 hover:bg-surface-2;
   }
 
   .section-label {
-    @apply font-mono text-[11px] uppercase tracking-[0.2em] text-accent;
+    @apply font-mono text-xs uppercase tracking-[0.18em] text-subtle;
   }
 
   .link-arrow {
-    @apply inline-flex items-center gap-2 font-mono text-sm text-accent transition-colors hover:text-foreground;
+    @apply inline-flex items-center gap-2 font-mono text-sm text-accent transition-colors hover:text-fg;
   }
 
   .meta {
-    @apply font-mono text-xs text-muted;
+    @apply font-mono text-xs text-subtle;
+  }
+
+  .heading-hero {
+    @apply text-[40px] leading-[1.05] tracking-[-0.03em] md:text-[64px];
+  }
+
+  .heading-section {
+    @apply text-3xl tracking-tight md:text-[44px] md:leading-[1.1];
+  }
+
+  .btn-accent {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-5 py-3 font-semibold text-on-accent transition-opacity hover:opacity-90;
+  }
+
+  .site-header {
+    background-color: var(--header-bg);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-blink {
+      animation: none !important;
+      opacity: 1 !important;
+    }
+
+    body {
+      transition: none;
+    }
   }
 }

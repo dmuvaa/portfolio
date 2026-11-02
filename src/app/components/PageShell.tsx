@@ -1,5 +1,5 @@
-import Header from "./Header"
-import Footer from "./Footer"
+import SiteFooter from "@/components/SiteFooter"
+import SiteHeader from "@/components/SiteHeader"
 
 export default function PageShell({
   children,
@@ -9,10 +9,13 @@ export default function PageShell({
   className?: string
 }) {
   return (
-    <div className={`flex min-h-screen flex-col ${className}`}>
-      <Header />
-      <main className="flex-1">{children}</main>
-      <Footer />
+    <div className={`relative flex min-h-screen flex-col ${className}`}>
+      <div className="pointer-events-none absolute inset-0 grid-bg" aria-hidden="true" />
+      <SiteHeader />
+      <main id="main" className="relative flex-1">
+        {children}
+      </main>
+      <SiteFooter />
     </div>
   )
 }

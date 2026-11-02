@@ -1,138 +1,194 @@
 import Link from "next/link"
-import Image from "next/image"
-import { ArrowUpRight, Github, Globe, Linkedin } from "lucide-react"
-import PageShell from "./components/PageShell"
-import Hero from "./components/Hero"
-import SectionHeading from "./components/SectionHeading"
-import { site } from "@/lib/site"
-import { projects } from "@/lib/projects"
+import SiteFooter from "@/components/SiteFooter"
+import SiteHeader from "@/components/SiteHeader"
+import Hero from "@/components/Hero"
+import MetricsStrip from "@/components/MetricsStrip"
+import ProjectCard from "@/components/ProjectCard"
+import ServiceCard from "@/components/ServiceCard"
+import CaseStudyTeaser from "@/components/CaseStudyTeaser"
+import ArticleCard from "@/components/ArticleCard"
+import Testimonial from "@/components/Testimonial"
+import AboutCard from "@/components/AboutCard"
+import ContactCTA from "@/components/ContactCTA"
+import SectionLabel from "@/components/SectionLabel"
+import Container from "@/components/Container"
+import { featuredProjects, getProject, projects } from "@content/projects"
+import { headlineMetrics } from "@content/metrics"
+import { featuredArticles } from "@content/writing"
+import { testimonials } from "@content/testimonials"
 
-const focusAreas = [
+const services = [
   {
-    index: "01",
-    title: "Software Engineering",
-    description: `${projects.length} recent builds — AI products, games, SEO tools, and client sites shipping on Next.js.`,
-    href: "/software-engineering",
-    cta: "view projects",
+    n: "01",
+    cmd: "$ build",
+    title: "Product engineering",
+    description: "Backend-first full-stack builds, from data model to deploy.",
+    items: [
+      "APIs, auth, background jobs, caching",
+      "Next.js apps on Supabase and Postgres",
+      "AI features with OpenAI, Anthropic, OpenRouter",
+    ],
+    stack: ["Node.js", "Python", "Next.js", "Supabase", "Docker"],
   },
   {
-    index: "02",
-    title: "Technical Writing",
+    n: "02",
+    cmd: "$ rank",
+    title: "Technical SEO",
     description:
-      "Documentation, SEO strategy, and articles that make complex topics legible.",
-    href: "/technical-writing",
-    cta: "read samples",
+      "Sites that search engines and AI assistants can crawl, understand, and cite.",
+    items: [
+      "Technical audits and fixes",
+      "SSR, schema markup, sitemaps, Core Web Vitals",
+      "Programmatic SEO and local SEO",
+    ],
+    stack: ["Search Console", "Ahrefs", "SEMrush", "Next.js"],
   },
-]
-
-const socials = [
-  { label: "LinkedIn", href: site.links.linkedin, icon: Linkedin },
-  { label: "GitHub", href: site.links.github, icon: Github },
-  { label: "Blog", href: site.links.blog, icon: Globe },
+  {
+    n: "03",
+    cmd: "$ explain",
+    title: "Technical writing",
+    description:
+      "Docs, tutorials, and articles that make complex topics clear and bring in traffic.",
+    items: [
+      "Product and API documentation",
+      "Developer tutorials and guides",
+      "SEO content strategy",
+    ],
+    stack: ["Markdown", "WordPress", "Google Analytics"],
+  },
 ]
 
 export default function Home() {
+  const featured = featuredProjects()
+  const featuredMain = featured[0]
+  const featuredRest = featured.slice(1, 4)
+  const excelbeam = getProject("excelbeam")
+  const writing = featuredArticles().slice(0, 3)
+
   return (
-    <PageShell>
-      <Hero
-        title="Dennis Muvaa"
-        description="I build scalable software and write about it clearly. Backend-leaning full-stack engineer with two years shipping production systems — from APIs and infra to docs that actually get read."
-        buttonText="explore about"
-        buttonLink="#about"
-      />
+    <div className="relative flex min-h-screen flex-col">
+      <SiteHeader />
+      <main id="main" className="relative flex-1">
+        <Hero />
+        <MetricsStrip metrics={headlineMetrics} />
 
-      <section id="about" className="border-b border-border">
-        <div className="mx-auto max-w-5xl px-4 py-16 md:px-6 md:py-20">
-          <SectionHeading
-            index="00"
-            title="About"
-            description="Full-stack developer with backend specialization. I care about performance, maintainability, and the kind of documentation that saves the next person three hours."
-          />
-
-          <div className="grid gap-10 md:grid-cols-[220px_1fr] md:items-start">
-            <div className="panel panel-hover mx-auto w-fit overflow-hidden p-1 md:mx-0">
-              <Image
-                src="/profile.jpg"
-                alt={site.name}
-                width={200}
-                height={250}
-                className="size-[200px] object-cover md:size-[220px]"
-              />
-            </div>
-
-            <div className="space-y-6">
-              <p className="text-base leading-relaxed text-muted md:text-lg">
-                I am a full stack developer specializing in scalable, high-performance
-                applications. From dynamic web apps to deep technical content, my work
-                balances robust engineering with clear communication — because good code
-                and good docs should ship together.
-              </p>
-
-              <Link href="/about" className="link-arrow">
-                full profile
-                <ArrowUpRight className="size-4" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="border-b border-border">
-        <div className="mx-auto max-w-5xl px-4 py-16 md:px-6 md:py-20">
-          <SectionHeading
-            index="01"
-            title="Focus Areas"
-            description="Two lanes, one obsession: building things that work and explaining how they work."
-          />
-
-          <div className="grid gap-4 md:grid-cols-2">
-            {focusAreas.map((area) => (
+        <section id="work" className="section-pad">
+          <Container>
+            <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+              <div>
+                <SectionLabel n="01" text="selected work" />
+                <h2 className="mt-4 heading-section font-semibold leading-tight">
+                  Products I designed, built, and shipped.
+                </h2>
+                <p className="mt-4 max-w-2xl text-lg text-muted">
+                  AI tools, SEO software, and browser games running in production.
+                  Each card links to a live build.
+                </p>
+              </div>
               <Link
-                key={area.href}
-                href={area.href}
-                className="panel panel-hover group flex flex-col justify-between p-6 md:p-8"
+                href="/work"
+                className="shrink-0 font-mono text-sm text-accent hover:underline"
               >
-                <div>
-                  <p className="section-label mb-4">{area.index}</p>
-                  <h3 className="text-xl font-medium text-foreground">{area.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-muted">
-                    {area.description}
-                  </p>
-                </div>
-                <span className="link-arrow mt-8 opacity-70 transition-opacity group-hover:opacity-100">
-                  {area.cta}
-                  <ArrowUpRight className="size-4" />
-                </span>
+                view all {projects.length} builds →
               </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+            </div>
 
-      <section>
-        <div className="mx-auto max-w-5xl px-4 py-16 md:px-6 md:py-20">
-          <SectionHeading
-            index="02"
-            title="Connect"
-            description="Always open to engineering conversations, writing collaborations, or a good debate about caching strategies."
+            {featuredMain ? (
+              <div className="mt-12">
+                <ProjectCard project={featuredMain} variant="featured" />
+              </div>
+            ) : null}
+
+            {featuredRest.length ? (
+              <div className="mt-5 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+                {featuredRest.map((project) => (
+                  <ProjectCard key={project.slug} project={project} />
+                ))}
+              </div>
+            ) : null}
+          </Container>
+        </section>
+
+        <section id="services" className="border-y border-line bg-surface/40">
+          <Container className="section-pad">
+            <SectionLabel n="02" text="what I do" />
+            <h2 className="mt-4 max-w-3xl heading-section font-semibold leading-tight">
+              One person who can build it, make it rank, and explain it.
+            </h2>
+            <div className="mt-12 grid gap-5 lg:grid-cols-3">
+              {services.map((service) => (
+                <ServiceCard key={service.n} {...service} />
+              ))}
+            </div>
+          </Container>
+        </section>
+
+        {excelbeam ? (
+          <CaseStudyTeaser
+            project={excelbeam}
+            paragraph="Most Excel courses check the number on screen. ExcelBeam checks the formula itself, so a hardcoded answer fails and a wrong range gets named. An AI tutor explains mistakes but never overrides the grader."
+            stats={[
+              { label: "exercises", value: "31" },
+              { label: "topics", value: "7" },
+              { label: "hint levels", value: "4" },
+            ]}
           />
+        ) : null}
 
-          <div className="flex flex-wrap gap-3">
-            {socials.map(({ label, href, icon: Icon }) => (
-              <a
-                key={href}
-                href={href}
+        <section id="writing" className="border-y border-line bg-surface/40">
+          <Container className="section-pad">
+            <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+              <div>
+                <SectionLabel n="04" text="writing" />
+                <h2 className="mt-4 heading-section font-semibold leading-tight">
+                  200+ technical articles published.
+                </h2>
+                <p className="mt-4 max-w-2xl text-lg text-muted">
+                  On cloud infrastructure, Node.js, Next.js, and SEO, for nOps,
+                  Cloud Infrastructure Services, and my own blog.
+                </p>
+              </div>
+              <Link
+                href="https://www.techlivened.com"
                 target="_blank"
-                rel="noopener noreferrer"
-                className="panel panel-hover inline-flex items-center gap-2 px-4 py-3 font-mono text-sm text-muted transition-colors hover:text-foreground"
+                rel="noopener"
+                className="shrink-0 font-mono text-sm text-accent hover:underline"
+                aria-label="More articles on techlivened.com"
               >
-                <Icon className="size-4 text-accent" />
-                {label.toLowerCase()}
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-    </PageShell>
+                more on techlivened.com ↗
+              </Link>
+            </div>
+            {writing.length ? (
+              <div className="mt-12 grid gap-5 md:grid-cols-3">
+                {writing.map((article) => (
+                  <ArticleCard key={article.url} article={article} />
+                ))}
+              </div>
+            ) : null}
+          </Container>
+        </section>
+
+        <section id="about" className="section-pad">
+          <Container
+            className={`grid gap-6 ${
+              testimonials.length > 0 ? "lg:grid-cols-[1fr_1.1fr]" : ""
+            }`}
+          >
+            {testimonials.length > 0
+              ? testimonials.map((item) => (
+                  <Testimonial
+                    key={`${item.name}-${item.company}`}
+                    testimonial={item}
+                  />
+                ))
+              : null}
+            <AboutCard />
+          </Container>
+        </section>
+
+        <ContactCTA />
+      </main>
+      <SiteFooter />
+    </div>
   )
 }

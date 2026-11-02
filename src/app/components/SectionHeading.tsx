@@ -1,3 +1,5 @@
+import SectionLabel from "@/components/SectionLabel"
+
 interface SectionHeadingProps {
   index: string
   title: string
@@ -11,19 +13,18 @@ export default function SectionHeading({
   description,
   align = "left",
 }: SectionHeadingProps) {
-  const alignClass = align === "center" ? "text-center items-center" : "text-left items-start"
+  const alignClass =
+    align === "center" ? "text-center items-center" : "text-left items-start"
 
   return (
     <div className={`mb-10 flex flex-col gap-3 ${alignClass}`}>
-      <p className="section-label">{index}</p>
-      <h2 className="text-2xl font-medium tracking-tight text-foreground md:text-3xl">
-        {title}
-      </h2>
-      {description && (
+      <SectionLabel n={index} text={title.toLowerCase()} />
+      <h2 className="heading-section font-medium text-fg">{title}</h2>
+      {description ? (
         <p className="max-w-2xl text-base leading-relaxed text-muted md:text-lg">
           {description}
         </p>
-      )}
+      ) : null}
     </div>
   )
 }

@@ -1,13 +1,24 @@
+import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowUpRight, ExternalLink } from "lucide-react"
 import PageShell from "../components/PageShell"
 import SectionHeading from "../components/SectionHeading"
+import SectionLabel from "@/components/SectionLabel"
+import JsonLd from "@/components/JsonLd"
 import { site } from "@/lib/site"
+import { liveArticles } from "@content/writing"
+
+export const metadata: Metadata = {
+  title: "Technical Writing & SEO",
+  description:
+    "Documentation, SEO strategy, and content that makes complex technical concepts accessible, while driving organic traffic through targeted creation.",
+  alternates: { canonical: "/technical-writing" },
+}
 
 const projects = [
   {
-    title: "SEO Content Strategy — Hidden Lemur Media",
+    title: "SEO Content Strategy: Hidden Lemur Media",
     date: "Feb 2021 - Sep 2022",
     points: [
       "Developed and implemented a comprehensive SEO strategy that increased organic traffic by 150% over six months",
@@ -17,7 +28,7 @@ const projects = [
     ],
   },
   {
-    title: "Technical Writing — Cloud Infrastructure Services",
+    title: "Technical Writing: Cloud Infrastructure Services",
     date: "July 2022 - April 2024",
     points: [
       "Authored over 200 blog articles on diverse tech topics, driving a 400% increase in website traffic",
@@ -27,7 +38,7 @@ const projects = [
     ],
   },
   {
-    title: "Cloud Writer — nOps.io",
+    title: "Cloud Writer: nOps.io",
     date: "May 2021 - May 2022",
     points: [
       "Produced detailed documentation on AWS Cloud Services, significantly reducing integration time",
@@ -120,44 +131,6 @@ const seoProjects = [
   },
 ]
 
-const articles = [
-  {
-    title: "Server-Side Rendering in Next.js for SEO",
-    description: "Explore the benefits of SSR in Next.js and its impact on SEO performance.",
-    url: "https://www.techlivened.com/server-side-rendering-in-nextjs-for-seo",
-  },
-  {
-    title: "React Hooks Explained",
-    description: "A comprehensive guide to understanding and using React Hooks effectively.",
-    url: "https://www.techlivened.com/react-hooks-explained",
-  },
-  {
-    title: "Microsoft Remote Desktop Services Security Best Practices",
-    description: "Learn how to secure your Remote Desktop Services environment effectively.",
-    url: "https://cloudinfrastructureservices.co.uk/microsoft-remote-desktop-services-security-best-practices/",
-  },
-  {
-    title: "Implementing Caching in Node.js",
-    description: "Discover techniques to improve Node.js application performance through caching.",
-    url: "https://www.techlivened.com/implementing-caching-in-node-js",
-  },
-  {
-    title: "NumPy vs Pandas in 2024",
-    description: "A comparison of two popular Python libraries for data manipulation and analysis.",
-    url: "https://www.techlivened.com/numpy-vs-pandas-in-2024",
-  },
-  {
-    title: "Best AI Tools to Generate Images",
-    description: "An overview of the top AI-powered image generation tools available in the market.",
-    url: "https://www.techlivened.com/best-ai-tools-to-generate-images",
-  },
-  {
-    title: "GitLab Integration: Integrating GitLab with Other Tools and Services",
-    description: "Learn how to integrate GitLab with various development tools and services.",
-    url: "https://cloudinfrastructureservices.co.uk/gitlab-integration-integrating-gitlab-with-other-tools-and-services/",
-  },
-]
-
 const skillGroups = [
   {
     title: "Technical Writing",
@@ -182,16 +155,37 @@ const skillGroups = [
 ]
 
 export default function TechnicalWriting() {
+  const articles = liveArticles()
+  const itemListJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: articles.map((article, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "Article",
+        headline: article.title,
+        url: article.url,
+        publisher: { "@type": "Organization", name: article.publication },
+      },
+    })),
+  }
+
   return (
     <PageShell>
+      <JsonLd data={itemListJsonLd} />
       <div className="mx-auto max-w-5xl px-4 py-16 md:px-6 md:py-20">
-        <SectionHeading
-          index="00"
-          title="Technical Writing"
-          description="Documentation, SEO strategy, and content that makes complex technical concepts accessible — while driving organic traffic through targeted creation."
-        />
+        <SectionLabel n="00" text="writing" />
+        <h1 className="mt-4 heading-section font-semibold text-fg">
+          Technical Writing
+        </h1>
+        <p className="mt-3 max-w-2xl text-base leading-relaxed text-muted md:text-lg">
+          Documentation, SEO strategy, and content that makes complex technical
+          concepts accessible, while driving organic traffic through targeted
+          creation.
+        </p>
 
-        <section className="mb-16">
+        <section className="mb-16 mt-10">
           <SectionHeading index="01" title="Experience" />
           <div className="grid gap-4 md:grid-cols-3">
             {projects.map((project) => (
@@ -257,17 +251,21 @@ export default function TechnicalWriting() {
         <section className="mb-16">
           <SectionHeading index="04" title="Article Samples" />
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {articles.map((article) => (
+            {liveArticles().map((article) => (
               <article key={article.url} className="panel panel-hover flex flex-col p-6">
-                <h3 className="text-base font-medium leading-snug text-foreground">
+                <p className="meta">
+                  {article.publication} · {article.topic}
+                </p>
+                <h3 className="mt-2 text-base font-medium leading-snug text-fg">
                   {article.title}
                 </h3>
-                <p className="mt-3 flex-1 text-sm text-muted">{article.description}</p>
+                <p className="mt-3 flex-1 text-sm text-muted">{article.summary}</p>
                 <a
                   href={article.url}
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener"
                   className="link-arrow mt-6"
+                  aria-label={`Read ${article.title} on ${article.publication}`}
                 >
                   read article
                   <ExternalLink className="size-4" />
@@ -277,7 +275,7 @@ export default function TechnicalWriting() {
           </div>
 
           <div className="mt-10 text-center">
-            <Link href={site.links.blog} className="link-arrow justify-center">
+            <Link href={site.blog} className="link-arrow justify-center">
               more on techlivened.com
               <ArrowUpRight className="size-4" />
             </Link>

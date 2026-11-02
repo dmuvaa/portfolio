@@ -1,0 +1,41 @@
+## The problem
+
+Most Excel courses grade the number on screen. That means a hardcoded answer can pass, and a wrong range can look correct if the final value happens to match. Learners need feedback on the formula itself: ranges, functions, and hardcodes.
+
+## Approach
+
+ExcelBeam puts a live spreadsheet in the browser with [Univer](https://univer.ai/). Learners type real formulas. A deterministic grader checks the formula structure, not only the displayed value. Progressive hints unlock when someone gets stuck, and an optional AI tutor explains mistakes without overriding the grader.
+
+## Architecture
+
+The grading path is: Univer spreadsheet, formula capture, deterministic grader, hint levels, then an OpenRouter tutor that explains without changing the score.
+
+```text
+Status: Pass
+Wrong range
+Empty cells
+```
+
+## Key decisions
+
+**Deterministic first.** Grading stays rule-based so feedback is stable and teachable. AI explains, it does not score.
+
+**Formula over value.** Checking ranges, functions, and hardcodes catches shortcuts that number-only checks miss.
+
+## Results
+
+{/* TODO(dennis): add outcome metrics once confirmed */}
+
+What is already shipped and visible on the live product:
+
+- 31 exercises across 7 topics
+- 4 hint levels
+- 18 shortcut drills
+- Free intro drills for keyboard shortcuts
+- OpenRouter AI tutor that explains mistakes but never overrides the grader
+
+## What I'd do next
+
+{/* TODO(dennis): confirm roadmap and any hard bug story before publishing */}
+
+Continue expanding lesson coverage and keep the grader as the source of truth while the tutor stays explanatory.
